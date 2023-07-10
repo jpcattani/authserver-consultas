@@ -1,6 +1,8 @@
 package br.pucpr.authserver.consulta
 
+import br.pucpr.authserver.consulta.response.ConsultaResponse
 import br.pucpr.authserver.medico.Medico
+import br.pucpr.authserver.medico.response.MedicoResponse
 import br.pucpr.authserver.paciente.Paciente
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -21,4 +23,7 @@ data class Consulta(
     @ManyToOne
     @JoinColumn(name = "idPaciente")
     val paciente: Paciente
-){}
+){
+    fun toResponse() = ConsultaResponse(id!!, dataConsulta, medico = MedicoResponse(medico.id,medico.nome,medico.crm),)
+
+}

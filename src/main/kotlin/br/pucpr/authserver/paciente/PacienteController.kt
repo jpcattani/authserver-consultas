@@ -37,15 +37,7 @@ class PacienteController(val service: PacienteService) {
             ?.let { ResponseEntity.ok(it.toResponse()) }
             ?: ResponseEntity.notFound().build()
 
-    @PostMapping("/login")
-    fun login(@Valid @RequestBody credentials: LoginRequest) =
-        service.login(credentials)
-            ?.let { ResponseEntity.ok(it) }
-            ?: ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
-
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    @SecurityRequirement(name = "AuthServer")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
         if (service.delete(id)) ResponseEntity.ok().build()
         else ResponseEntity.notFound().build()

@@ -1,6 +1,8 @@
 package br.pucpr.authserver.medico
 
 import br.pucpr.authserver.consulta.ConsultaService
+import br.pucpr.authserver.medico.request.MedicoRequest
+import br.pucpr.authserver.paciente.request.PacienteRequest
 import br.pucpr.authserver.users.requests.LoginRequest
 import br.pucpr.authserver.users.requests.UserRequest
 import io.swagger.v3.oas.annotations.Operation
@@ -18,4 +20,26 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/medico")
 class MedicoController(val service: MedicoService) {
 
+    @GetMapping
+    fun listMedicos() =
+        service.findAll()
+            .map { it.toResponse() }
+
+    @Transactional
+    @PostMapping
+    fun createMedico(@Valid @RequestBody req: MedicoRequest) =
+        service.save(req)
+            .toResponse()
+            .let { ResponseEntity.status(HttpStatus.CREATED).body(it) }
+
+    @GetMapping("/{id}")
+    fun getMedico(@PathVariable("id") id: Long) =
+        service.getById(id)
+            ?.let { ResponseEntity.ok(it.toResponse()) }
+            ?: ResponseEntity.notFound().build()
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
+        if (service.delete(id)) ResponseEntity.ok().build()
+        else ResponseEntity.notFound().build()
 }
