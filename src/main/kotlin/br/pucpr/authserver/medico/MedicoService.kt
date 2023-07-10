@@ -5,7 +5,9 @@ import br.pucpr.authserver.medico.request.MedicoRequest
 import br.pucpr.authserver.security.Jwt
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Service
 
+@Service
 class MedicoService (
     val repository: MedicoRepository,
     val jwt: Jwt

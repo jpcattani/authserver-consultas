@@ -11,7 +11,9 @@ import br.pucpr.authserver.users.requests.LoginRequest
 import br.pucpr.authserver.users.responses.LoginResponse
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Service
 
+@Service
 class PacienteService (
     val repository: PacienteRepository,
     val repositoryUsers: UsersRepository,

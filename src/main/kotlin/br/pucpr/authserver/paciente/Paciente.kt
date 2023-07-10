@@ -1,6 +1,8 @@
 package br.pucpr.authserver.paciente
 
 import br.pucpr.authserver.consulta.Consulta
+import br.pucpr.authserver.paciente.response.PacienteResponse
+import br.pucpr.authserver.users.responses.UserResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -24,4 +26,6 @@ data class Paciente(
 
     @OneToMany(mappedBy = "TblPaciente")
     val consultas: Set<Consulta> = emptySet()
-){}
+){
+    fun toResponse() = PacienteResponse(id!!, nome, dataNascimento)
+}

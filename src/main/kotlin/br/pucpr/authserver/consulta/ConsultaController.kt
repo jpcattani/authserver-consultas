@@ -16,48 +16,5 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/consulta")
 class ConsultaController(val service: ConsultaService) {
-    @Operation(
-        summary = "Lista todos as consultas",
-        parameters = [
-            Parameter(
-                name = "role",
-                description = "Papel a ser usado no filtro (opcional)",
-                example = "USER"
-            )]
-    )
-    @GetMapping
-    fun listUsers(@RequestParam("role") role: String?) =
-        service.findAll(role)
-            .map { it.toResponse() }
 
-    @Transactional
-    @PostMapping
-    fun createUser(@Valid @RequestBody req: UserRequest) =
-        service.save(req)
-            .toResponse()
-            .let { ResponseEntity.status(HttpStatus.CREATED).body(it) }
-
-    @GetMapping("/me")
-    @PreAuthorize("permitAll()")
-    @SecurityRequirement(name = "AuthServer")
-    fun getSelf(auth: Authentication) = getUser(auth.credentials as Long)
-
-    @GetMapping("/{id}")
-    fun getConsulta(@PathVariable("id") id: Long) =
-        service.getById(id)
-            ?.let { ResponseEntity.ok(it.toResponse()) }
-            ?: ResponseEntity.notFound().build()
-
-    @PostMapping("/login")
-    fun login(@Valid @RequestBody credentials: LoginRequest) =
-        service.login(credentials)
-            ?.let { ResponseEntity.ok(it) }
-            ?: ResponseEntity.status(HttpStatus.UNAUTHORIZED).build()
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    @SecurityRequirement(name = "AuthServer")
-    fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
-        if (service.delete(id)) ResponseEntity.ok().build()
-        else ResponseEntity.notFound().build()
 }
