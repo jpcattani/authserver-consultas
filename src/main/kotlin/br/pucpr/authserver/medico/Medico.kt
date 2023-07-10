@@ -1,5 +1,6 @@
-package br.pucpr.authserver.consulta
+package br.pucpr.authserver.medico
 
+import br.pucpr.authserver.consulta.Consulta
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -8,14 +9,17 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "TblPaciente")
-data class Paciente(
+@Table(name = "TblMedico")
+data class Medico(
     @Id @GeneratedValue
     val id: Long = 0,
 
     @Column(nullable = false)
     val nome: String,
 
-    @OneToMany(mappedBy = "TblPaciente")
+    @Column(nullable = false)
+    val crm: String,
+
+    @OneToMany(mappedBy = "TblMedico")
     val consultas: Set<Consulta> = emptySet()
-)
+){}

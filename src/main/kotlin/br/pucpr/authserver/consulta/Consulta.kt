@@ -1,10 +1,8 @@
 package br.pucpr.authserver.consulta
 
-import br.pucpr.authserver.users.Role
-import br.pucpr.authserver.users.responses.UserResponse
+import br.pucpr.authserver.medico.Medico
+import br.pucpr.authserver.paciente.Paciente
 import jakarta.persistence.*
-import jakarta.validation.constraints.Email
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
@@ -13,7 +11,8 @@ data class Consulta(
     @Id @GeneratedValue
     val id: Long = 0,
 
-    val data: LocalDateTime,
+    @Column(nullable = false)
+    val dataConsulta: LocalDateTime,
 
     @ManyToOne
     @JoinColumn(name = "idMedico")
@@ -22,4 +21,4 @@ data class Consulta(
     @ManyToOne
     @JoinColumn(name = "idPaciente")
     val paciente: Paciente
-)
+){}
