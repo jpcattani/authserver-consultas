@@ -32,6 +32,6 @@ class MedicoService (
     }
 
     companion object {
-        val log = LoggerFactory.getLogger(ConsultaService::class.java)
+        val log = LoggerFactory.getLogger(MedicoService::class.java)
     }
 }

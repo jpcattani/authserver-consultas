@@ -1,7 +1,6 @@
 package br.pucpr.authserver.consulta
 
 import br.pucpr.authserver.consulta.requests.ConsultaRequest
-import br.pucpr.authserver.medico.request.MedicoRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus

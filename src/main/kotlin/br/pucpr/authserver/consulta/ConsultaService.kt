@@ -3,17 +3,12 @@ package br.pucpr.authserver.consulta
 import br.pucpr.authserver.consulta.requests.ConsultaRequest
 import br.pucpr.authserver.medico.Medico
 import br.pucpr.authserver.medico.MedicoRepository
-import br.pucpr.authserver.medico.request.MedicoRequest
 import br.pucpr.authserver.paciente.Paciente
 import br.pucpr.authserver.paciente.PacienteRepository
 import br.pucpr.authserver.security.Jwt
-import br.pucpr.authserver.users.UsersRepository
-import br.pucpr.authserver.users.requests.LoginRequest
-import br.pucpr.authserver.users.responses.LoginResponse
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service

@@ -1,8 +1,6 @@
 package br.pucpr.authserver.paciente
 
-import br.pucpr.authserver.consulta.ConsultaService
-import br.pucpr.authserver.exception.BadRequestException
-import br.pucpr.authserver.medico.Medico
+
 import br.pucpr.authserver.paciente.request.PacienteRequest
 import br.pucpr.authserver.security.Jwt
 import br.pucpr.authserver.users.UsersRepository
@@ -15,9 +13,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PacienteService (
-    val repository: PacienteRepository,
-    val repositoryUsers: UsersRepository,
-    val jwt: Jwt
+    val repository: PacienteRepository
 ) {
     fun save(req: PacienteRequest): Paciente {
         val paciente = Paciente(
@@ -38,18 +34,7 @@ class PacienteService (
         return true
     }
 
-    fun login(credentials: LoginRequest): LoginResponse? {
-        val user = repositoryUsers.findByEmail(credentials.email!!) ?: return null
-        if (user.password != credentials.password) return null
-        UsersService.log.info("User logged in. id={} name={}", user.id, user.name)
-        return LoginResponse(
-            token = jwt.createToken(user),
-            user.toResponse()
-        )
-    }
-
-
     companion object {
-        val log = LoggerFactory.getLogger(ConsultaService::class.java)
+        val log = LoggerFactory.getLogger(PacienteService::class.java)
     }
 }

@@ -24,8 +24,8 @@ data class Paciente(
     @Column(nullable = false)
     val dataNascimento: LocalDate,
 
-    @OneToMany(mappedBy = "TblPaciente")
+    @OneToMany(mappedBy = "paciente")
     val consultas: Set<Consulta> = emptySet()
 ){
-    fun toResponse() = PacienteResponse(id!!, nome, dataNascimento)
+    fun toResponse() = PacienteResponse(id, nome, dataNascimento)
 }
