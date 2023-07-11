@@ -3,6 +3,7 @@ package br.pucpr.authserver.consultas
 import br.pucpr.authserver.consultas.requests.ConsultaRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -27,7 +28,10 @@ class ConsultaController(val service: ConsultaService) {
             service.findAll()
         }
 
-        if(consultas.isNullOrEmpty()) return  emptyList()
+        if(consultas.isNullOrEmpty()){
+            log.warn("Lista de consultas vazia")
+            return  emptyList()
+        }
 
         // tipo de ordenação por data, nome do medico, ou nome do paciente
         val sortedConsultas = when (orderBy) {
@@ -73,4 +77,9 @@ class ConsultaController(val service: ConsultaService) {
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
         if (service.delete(id)) ResponseEntity.ok().build()
-        else ResponseEntity.notFound().build()}
+        else ResponseEntity.notFound().build()
+
+    companion object {
+        val log = LoggerFactory.getLogger(ConsultaController::class.java)
+    }
+}
