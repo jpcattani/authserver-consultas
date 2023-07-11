@@ -9,6 +9,7 @@ import br.pucpr.authserver.security.Jwt
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service
@@ -42,7 +43,7 @@ class ConsultaService(
 
     fun getById(id: Long): Consulta? = repository.findByIdOrNull(id)
 
-    fun findAllByDataConsulta(dataConsulta: LocalDateTime): List<Consulta>? = repository.findConsultaByDataConsulta(dataConsulta)
+    fun findAllByDataConsulta(dataConsulta: LocalDate): List<Consulta>? = repository.findConsultaByDataConsulta(dataConsulta)
 
     fun findAll(): List<Consulta> = repository.findAll()
 

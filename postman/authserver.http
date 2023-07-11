@@ -102,7 +102,7 @@ Content-Type: application/json
   "idPaciente": 2
 }
 ### Listar consultas pelo do dia 11/07/2023
-GET localhost:8080/api/consultas/filter/2023-07-11T00:00:00
+ GET localhost:8080/api/consultas/data/2023-07-11
 
 ### Exclui consulta 1
 DELETE localhost:8080/api/consultas/1

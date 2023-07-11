@@ -6,6 +6,7 @@ import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @RestController
@@ -16,11 +17,6 @@ class ConsultaController(val service: ConsultaService) {
         service.findAll()
             .map { it.toResponse() }
 
-
-    @GetMapping("/{dataConsulta}")
-    fun listConsultasByDataConsulta(@Valid @PathVariable("dataConsulta") dataConsulta: LocalDateTime) =
-        service.findAllByDataConsulta(dataConsulta)?.map { it.toResponse() }
-
     @Transactional
     @PostMapping
     fun createConsulta(@Valid @RequestBody req: ConsultaRequest) =
@@ -28,6 +24,10 @@ class ConsultaController(val service: ConsultaService) {
         service.save(req)
             .toResponse()
             .let { ResponseEntity.status(HttpStatus.CREATED).body(it) }
+
+    @GetMapping("/data/{dataConsulta}")
+    fun listConsultasByDataConsulta(@Valid @PathVariable("dataConsulta") dataConsulta: LocalDate) =
+        service.findAllByDataConsulta(dataConsulta)?.map { it.toResponse() }
 
     @GetMapping("/{id}")
     fun getConsulta(@PathVariable("id") id: Long) =
