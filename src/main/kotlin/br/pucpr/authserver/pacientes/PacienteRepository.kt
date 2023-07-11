@@ -1,4 +1,4 @@
-package br.pucpr.authserver.paciente
+package br.pucpr.authserver.pacientes
 
 import org.springframework.data.jpa.repository.JpaRepository
 

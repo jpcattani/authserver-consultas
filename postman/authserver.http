@@ -1,8 +1,8 @@
 ### Listar pacientes
-GET localhost:8080/api/paciente
+GET localhost:8080/api/pacientes
 
 ### Cadastra paciente1
-POST localhost:8080/api/paciente
+POST localhost:8080/api/pacientes
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### Cadastra paciente2
-POST localhost:8080/api/paciente
+POST localhost:8080/api/pacientes
 Content-Type: application/json
 
 {
@@ -20,20 +20,20 @@ Content-Type: application/json
 }
 
 ### Exclui o paciente1
-DELETE localhost:8080/api/paciente/1
+DELETE localhost:8080/api/pacientes/1
 Authorization: Bearer {{token}}
 
 ### Exclui o paciente2
-DELETE localhost:8080/api/paciente/2
+DELETE localhost:8080/api/pacientes/2
 Authorization: Bearer {{token}}
 
 ### ---------------------------------------------------------------------
 
 ### Listar medicos
-GET localhost:8080/api/medico
+GET localhost:8080/api/medicos
 
 ### Cadastra medico 1
-POST localhost:8080/api/medico
+POST localhost:8080/api/medicos
 Content-Type: application/json
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json
 }
 
 ### Cadastra medico 2
-POST localhost:8080/api/medico
+POST localhost:8080/api/medicos
 Content-Type: application/json
 
 {
@@ -51,39 +51,39 @@ Content-Type: application/json
 }
 
 ### Exclui o medico1
-DELETE localhost:8080/api/medico/1
+DELETE localhost:8080/api/medicos/1
 Authorization: Bearer {{token}}
 
 ### Exclui o medico2
-DELETE localhost:8080/api/medico/2
+DELETE localhost:8080/api/medicos/2
 Authorization: Bearer {{token}}
 
 ### ---------------------------------------------------------------------
 
 ### Listar consultas
-GET localhost:8080/api/consulta
+GET localhost:8080/api/consultas
 
 ### Marcar consulta 1
-POST localhost:8080/api/consulta
+POST localhost:8080/api/consultas
 Content-Type: application/json
 
 {
-  "dataConsulta": "2023-07-12T10:00:00",
+  "dataConsulta": "2023-07-11T05:30:40",
   "idMedico": 1,
   "idPaciente": 1
-
 }
+
 ### Marcar consulta 2
-POST localhost:8080/api/consulta
+POST localhost:8080/api/consultas
 Content-Type: application/json
 
 {
-  "dataConsulta": "2023-07-12T11:00:00",
+  "dataConsulta": "2023-07-11T05:30:40",
   "idMedico": 1,
   "idPaciente": 2
 }
 ### Marcar consulta 3
-POST localhost:8080/api/consulta
+POST localhost:8080/api/consultas
 Content-Type: application/json
 
 {
@@ -93,7 +93,7 @@ Content-Type: application/json
 }
 
 ### Marcar consulta 4
-POST localhost:8080/api/consulta
+POST localhost:8080/api/consultas
 Content-Type: application/json
 
 {
@@ -102,22 +102,22 @@ Content-Type: application/json
   "idPaciente": 2
 }
 ### Listar consultas pelo do dia 11/07/2023
-GET localhost:8080/api/consulta?dataConsulta=2023-07-11T00:00:00
+GET localhost:8080/api/consultas/filter/2023-07-11T00:00:00
 
 ### Exclui consulta 1
-DELETE localhost:8080/api/medico/1
+DELETE localhost:8080/api/consultas/1
 Authorization: Bearer {{token}}
 
 ### Exclui consulta 2
-DELETE localhost:8080/api/medico/2
+DELETE localhost:8080/api/consultas/2
 Authorization: Bearer {{token}}
 
 ### Exclui consulta 3
-DELETE localhost:8080/api/medico/3
+DELETE localhost:8080/api/consultas/3
 Authorization: Bearer {{token}}
 
 ### Exclui consulta 4
-DELETE localhost:8080/api/medico/4
+DELETE localhost:8080/api/consultas/4
 Authorization: Bearer {{token}}
 ### ---------------------------------------------------------------------
 

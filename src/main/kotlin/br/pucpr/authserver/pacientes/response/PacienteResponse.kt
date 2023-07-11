@@ -1,6 +1,4 @@
-package br.pucpr.authserver.paciente.response
-
-import java.time.LocalDate
+package br.pucpr.authserver.pacientes.response
 
 data class PacienteResponse (
     val id: Long,

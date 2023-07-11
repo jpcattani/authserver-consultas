@@ -1,12 +1,7 @@
-package br.pucpr.authserver.paciente
+package br.pucpr.authserver.pacientes
 
 
-import br.pucpr.authserver.paciente.request.PacienteRequest
-import br.pucpr.authserver.security.Jwt
-import br.pucpr.authserver.users.UsersRepository
-import br.pucpr.authserver.users.UsersService
-import br.pucpr.authserver.users.requests.LoginRequest
-import br.pucpr.authserver.users.responses.LoginResponse
+import br.pucpr.authserver.pacientes.request.PacienteRequest
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service

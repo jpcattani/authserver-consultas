@@ -1,10 +1,10 @@
-package br.pucpr.authserver.consulta
+package br.pucpr.authserver.consultas
 
-import br.pucpr.authserver.consulta.requests.ConsultaRequest
-import br.pucpr.authserver.medico.Medico
-import br.pucpr.authserver.medico.MedicoRepository
-import br.pucpr.authserver.paciente.Paciente
-import br.pucpr.authserver.paciente.PacienteRepository
+import br.pucpr.authserver.consultas.requests.ConsultaRequest
+import br.pucpr.authserver.medicos.Medico
+import br.pucpr.authserver.medicos.MedicoRepository
+import br.pucpr.authserver.pacientes.Paciente
+import br.pucpr.authserver.pacientes.PacienteRepository
 import br.pucpr.authserver.security.Jwt
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
@@ -20,8 +20,16 @@ class ConsultaService(
 ) {
 
     fun save(req: ConsultaRequest): Consulta {
-        val medico:Medico = medicoRepository.findById(req.idMedico).orElseThrow { NoSuchElementException("Médico não encontrado") }
-        val paciente:Paciente = pacienteRepository.findById(req.idPaciente).orElseThrow { NoSuchElementException("Paciente não encontrado") }
+
+        log.warn("Consulta SAVE ")
+       log.warn("Consulta save idMedico={}",req.idMedico.toString())
+
+        log.warn("Consulta save idPaciente={}", req.idPaciente.toString())
+
+        log.warn("Consulta save data={}",req.dataConsulta.toString())
+
+        val medico:Medico = medicoRepository.findById(1).orElseThrow { NoSuchElementException("Médico não encontrado") }
+        val paciente:Paciente = pacienteRepository.findById(1).orElseThrow { NoSuchElementException("Paciente não encontrado") }
 
         val consulta = Consulta(
             paciente = paciente,
@@ -29,6 +37,7 @@ class ConsultaService(
             dataConsulta = req.dataConsulta
         )
         return repository.save(consulta)
+
     }
 
     fun getById(id: Long): Consulta? = repository.findByIdOrNull(id)

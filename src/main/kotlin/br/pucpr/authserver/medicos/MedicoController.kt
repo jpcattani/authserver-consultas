@@ -1,6 +1,6 @@
-package br.pucpr.authserver.paciente
+package br.pucpr.authserver.medicos
 
-import br.pucpr.authserver.paciente.request.PacienteRequest
+import br.pucpr.authserver.medicos.request.MedicoRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
@@ -8,23 +8,23 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/paciente")
-class PacienteController(val service: PacienteService) {
+@RequestMapping("/medicos")
+class MedicoController(val service: MedicoService) {
 
     @GetMapping
-    fun listPacientes() =
+    fun listMedicos() =
         service.findAll()
             .map { it.toResponse() }
 
     @Transactional
     @PostMapping
-    fun createPaciente(@Valid @RequestBody req: PacienteRequest) =
+    fun createMedico(@Valid @RequestBody req: MedicoRequest) =
         service.save(req)
             .toResponse()
             .let { ResponseEntity.status(HttpStatus.CREATED).body(it) }
 
     @GetMapping("/{id}")
-    fun getPaciente(@PathVariable("id") id: Long) =
+    fun getMedico(@PathVariable("id") id: Long) =
         service.getById(id)
             ?.let { ResponseEntity.ok(it.toResponse()) }
             ?: ResponseEntity.notFound().build()

@@ -1,13 +1,11 @@
-package br.pucpr.authserver.consulta.requests
+package br.pucpr.authserver.consultas.requests
 
 import jakarta.validation.constraints.NotBlank
+import org.springframework.format.annotation.DateTimeFormat
 import java.time.LocalDateTime
 
 data class ConsultaRequest (
-    @field:NotBlank
     val dataConsulta: LocalDateTime,
-    @field:NotBlank
     val idMedico: Long,
-    @field:NotBlank
     val idPaciente: Long
     ){}

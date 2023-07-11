@@ -1,4 +1,4 @@
-package br.pucpr.authserver.consulta
+package br.pucpr.authserver.consultas
 
 import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDateTime

@@ -1,7 +1,7 @@
-package br.pucpr.authserver.consulta.response
+package br.pucpr.authserver.consultas.response
 
-import br.pucpr.authserver.medico.response.MedicoResponse
-import br.pucpr.authserver.paciente.response.PacienteResponse
+import br.pucpr.authserver.medicos.response.MedicoResponse
+import br.pucpr.authserver.pacientes.response.PacienteResponse
 import java.time.LocalDateTime
 
 data class ConsultaResponse (

@@ -1,7 +1,7 @@
-package br.pucpr.authserver.medico
+package br.pucpr.authserver.medicos
 
-import br.pucpr.authserver.consulta.Consulta
-import br.pucpr.authserver.medico.response.MedicoResponse
+import br.pucpr.authserver.consultas.Consulta
+import br.pucpr.authserver.medicos.response.MedicoResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

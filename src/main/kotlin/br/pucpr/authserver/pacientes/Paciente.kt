@@ -1,15 +1,13 @@
-package br.pucpr.authserver.paciente
+package br.pucpr.authserver.pacientes
 
-import br.pucpr.authserver.consulta.Consulta
-import br.pucpr.authserver.paciente.response.PacienteResponse
-import br.pucpr.authserver.users.responses.UserResponse
+import br.pucpr.authserver.consultas.Consulta
+import br.pucpr.authserver.pacientes.response.PacienteResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
-import java.time.LocalDate
 
 
 @Entity

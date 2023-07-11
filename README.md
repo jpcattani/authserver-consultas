@@ -1,3 +1,6 @@
-Servidor de autenticação Kotlin + SpringBoot usado nas aulas de desenvolvimento Backend.
+Estendendo a aplicação da matéria de Backend foram incluídas as 
+classes Consulta, Medico e Paciente para uma simulação exemplo de marcação de consultas médicas.
+Criado endpoints para cadastro de medicos e consultas.
+
 
 PUCPR 2023

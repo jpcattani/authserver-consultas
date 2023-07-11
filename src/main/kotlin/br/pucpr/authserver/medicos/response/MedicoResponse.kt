@@ -1,4 +1,4 @@
-package br.pucpr.authserver.medico.response
+package br.pucpr.authserver.medicos.response
 
 data class MedicoResponse (
     val id:Long,

@@ -1,12 +1,11 @@
-package br.pucpr.authserver.medico.request
+package br.pucpr.authserver.pacientes.request
 
 import jakarta.validation.constraints.NotBlank
 
-data class MedicoRequest (
+class PacienteRequest (
     @field:NotBlank
     val nome: String?,
 
     @field:NotBlank
-    val crm: String?
+    val telefone: String?
 )
-

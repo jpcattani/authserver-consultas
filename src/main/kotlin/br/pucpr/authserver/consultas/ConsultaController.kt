@@ -1,6 +1,6 @@
-package br.pucpr.authserver.consulta
+package br.pucpr.authserver.consultas
 
-import br.pucpr.authserver.consulta.requests.ConsultaRequest
+import br.pucpr.authserver.consultas.requests.ConsultaRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 
 @RestController
-@RequestMapping("/consulta")
+@RequestMapping("/consultas")
 class ConsultaController(val service: ConsultaService) {
     @GetMapping
     fun listConsultas() =
         service.findAll()
             .map { it.toResponse() }
 
-    @GetMapping
-    fun listConsultasByDataConsulta(@Valid @RequestBody dataConsulta: LocalDateTime) =
-        service.findAllByDataConsulta(dataConsulta )?.map { it.toResponse() }
+
+    @GetMapping("/{dataConsulta}")
+    fun listConsultasByDataConsulta(@Valid @PathVariable("dataConsulta") dataConsulta: LocalDateTime) =
+        service.findAllByDataConsulta(dataConsulta)?.map { it.toResponse() }
 
     @Transactional
     @PostMapping
     fun createConsulta(@Valid @RequestBody req: ConsultaRequest) =
+
         service.save(req)
             .toResponse()
             .let { ResponseEntity.status(HttpStatus.CREATED).body(it) }

@@ -1,7 +1,6 @@
-package br.pucpr.authserver.medico
+package br.pucpr.authserver.medicos
 
-import br.pucpr.authserver.consulta.ConsultaService
-import br.pucpr.authserver.medico.request.MedicoRequest
+import br.pucpr.authserver.medicos.request.MedicoRequest
 import br.pucpr.authserver.security.Jwt
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
