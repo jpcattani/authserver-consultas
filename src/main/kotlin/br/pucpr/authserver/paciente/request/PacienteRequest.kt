@@ -8,5 +8,5 @@ class PacienteRequest (
     val nome: String?,
 
     @field:NotBlank
-    val dataNascimento: LocalDate?
+    val telefone: String?
 )

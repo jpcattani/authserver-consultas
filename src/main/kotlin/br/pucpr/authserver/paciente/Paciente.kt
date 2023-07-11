@@ -22,10 +22,10 @@ data class Paciente(
     val nome: String,
 
     @Column(nullable = false)
-    val dataNascimento: LocalDate,
+    val telefone: String,
 
     @OneToMany(mappedBy = "paciente")
     val consultas: Set<Consulta> = emptySet()
 ){
-    fun toResponse() = PacienteResponse(id, nome, dataNascimento)
+    fun toResponse() = PacienteResponse(id, nome, telefone)
 }

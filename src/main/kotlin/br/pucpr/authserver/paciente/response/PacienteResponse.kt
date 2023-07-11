@@ -5,5 +5,5 @@ import java.time.LocalDate
 data class PacienteResponse (
     val id: Long,
     val nome: String,
-    val dataNascimento: LocalDate
+    val telefone: String
 )

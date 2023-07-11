@@ -18,7 +18,7 @@ class PacienteService (
     fun save(req: PacienteRequest): Paciente {
         val paciente = Paciente(
             nome = req.nome!!,
-            dataNascimento = req.dataNascimento!!
+            telefone = req.telefone!!
         )
         return repository.save(paciente)
     }

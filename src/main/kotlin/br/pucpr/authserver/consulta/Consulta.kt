@@ -28,7 +28,7 @@ data class Consulta(
     fun toResponse() = ConsultaResponse(id!!,
         dataConsulta,
         medico = MedicoResponse(medico.id,medico.nome,medico.crm),
-        paciente = PacienteResponse(paciente.id,paciente.nome,paciente.dataNascimento),
+        paciente = PacienteResponse(paciente.id,paciente.nome,paciente.telefone),
     )
 
 }

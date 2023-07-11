@@ -1,19 +1,38 @@
 ### Listar pacientes
 GET localhost:8080/api/paciente
 
-### Cadastra um paciente
+### Cadastra paciente1
 POST localhost:8080/api/paciente
 Content-Type: application/json
 
 {
-  "nome": "paciente da silva",
-  "data": "2023-07-10"
+  "nome": "paciente1 da silva",
+  "telefone": "46999995555"
 }
+
+### Cadastra paciente2
+POST localhost:8080/api/paciente
+Content-Type: application/json
+
+{
+  "nome": "paciente2 da silva",
+  "telefone": "41888885555"
+}
+
+### Exclui o paciente1
+DELETE localhost:8080/api/paciente/1
+Authorization: Bearer {{token}}
+
+### Exclui o paciente2
+DELETE localhost:8080/api/paciente/2
+Authorization: Bearer {{token}}
+
+### ---------------------------------------------------------------------
 
 ### Listar medicos
 GET localhost:8080/api/medico
 
-### Cadastra um medico
+### Cadastra medico 1
 POST localhost:8080/api/medico
 Content-Type: application/json
 
@@ -22,9 +41,85 @@ Content-Type: application/json
   "crm": "crm123456"
 }
 
+### Cadastra medico 2
+POST localhost:8080/api/medico
+Content-Type: application/json
+
+{
+  "nome": "medico2",
+  "crm": "crm55555"
+}
+
+### Exclui o medico1
+DELETE localhost:8080/api/medico/1
+Authorization: Bearer {{token}}
+
+### Exclui o medico2
+DELETE localhost:8080/api/medico/2
+Authorization: Bearer {{token}}
+
+### ---------------------------------------------------------------------
+
 ### Listar consultas
 GET localhost:8080/api/consulta
 
+### Marcar consulta 1
+POST localhost:8080/api/consulta
+Content-Type: application/json
+
+{
+  "dataConsulta": "2023-07-12T10:00:00",
+  "idMedico": 1,
+  "idPaciente": 1
+
+}
+### Marcar consulta 2
+POST localhost:8080/api/consulta
+Content-Type: application/json
+
+{
+  "dataConsulta": "2023-07-12T11:00:00",
+  "idMedico": 1,
+  "idPaciente": 2
+}
+### Marcar consulta 3
+POST localhost:8080/api/consulta
+Content-Type: application/json
+
+{
+  "dataConsulta": "2023-07-12T13:00:00",
+  "idMedico": 2,
+  "idPaciente": 1
+}
+
+### Marcar consulta 4
+POST localhost:8080/api/consulta
+Content-Type: application/json
+
+{
+  "dataConsulta": "2023-07-13T13:00:00",
+  "idMedico": 2,
+  "idPaciente": 2
+}
+### Listar consultas pelo do dia 11/07/2023
+GET localhost:8080/api/consulta?dataConsulta=2023-07-11T00:00:00
+
+### Exclui consulta 1
+DELETE localhost:8080/api/medico/1
+Authorization: Bearer {{token}}
+
+### Exclui consulta 2
+DELETE localhost:8080/api/medico/2
+Authorization: Bearer {{token}}
+
+### Exclui consulta 3
+DELETE localhost:8080/api/medico/3
+Authorization: Bearer {{token}}
+
+### Exclui consulta 4
+DELETE localhost:8080/api/medico/4
+Authorization: Bearer {{token}}
+### ---------------------------------------------------------------------
 
 ### Listar usuários
 GET localhost:8080/api/users
