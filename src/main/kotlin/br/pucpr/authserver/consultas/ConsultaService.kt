@@ -22,15 +22,8 @@ class ConsultaService(
 
     fun save(req: ConsultaRequest): Consulta {
 
-        log.warn("Consulta SAVE ")
-       log.warn("Consulta save idMedico={}",req.idMedico.toString())
-
-        log.warn("Consulta save idPaciente={}", req.idPaciente.toString())
-
-        log.warn("Consulta save data={}",req.dataConsulta.toString())
-
-        val medico:Medico = medicoRepository.findById(1).orElseThrow { NoSuchElementException("Médico não encontrado") }
-        val paciente:Paciente = pacienteRepository.findById(1).orElseThrow { NoSuchElementException("Paciente não encontrado") }
+        val medico:Medico = medicoRepository.findById(req.idMedico).orElseThrow { NoSuchElementException("Médico não encontrado") }
+        val paciente:Paciente = pacienteRepository.findById(req.idPaciente).orElseThrow { NoSuchElementException("Paciente não encontrado") }
 
         val consulta = Consulta(
             paciente = paciente,

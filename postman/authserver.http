@@ -104,6 +104,18 @@ Content-Type: application/json
 ### Listar consultas pelo do dia 11/07/2023
  GET localhost:8080/api/consultas/data/2023-07-11
 
+### Listar todas as consultas
+GET localhost:8080/api/consultas/consultas
+### Filtrar todas as consultas com data 11/07/2023
+GET localhost:8080/api/consultas/consultas?dataConsulta=2023-07-11
+### Filtrar todas as consultas com data 11/07/2023 e ordenar por nome do medico
+GET localhost:8080/api/consultas/consultas?dataConsulta=2023-07-11&orderBy=medico
+### Filtrar todas as consultas com data 11/07/2023 e ordenar por nome do medico decrescente
+GET localhost:8080/api/consultas/consultas?dataConsulta=2023-07-11&orderBy=medico&direction=desc
+### Filtrar todas as consultas com data 11/07/2023 e ordenar por nome do paciente
+GET localhost:8080/api/consultas/consultas?dataConsulta=2023-07-11&orderBy=paciente
+
+
 ### Exclui consulta 1
 DELETE localhost:8080/api/consultas/1
 Authorization: Bearer {{token}}
