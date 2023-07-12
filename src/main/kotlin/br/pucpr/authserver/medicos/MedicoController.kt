@@ -32,7 +32,6 @@ class MedicoController(val service: MedicoService) {
             ?: ResponseEntity.notFound().build()
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     @SecurityRequirement(name = "AuthServer")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
         if (service.delete(id)) ResponseEntity.ok().build()

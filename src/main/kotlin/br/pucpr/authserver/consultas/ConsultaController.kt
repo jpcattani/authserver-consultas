@@ -1,6 +1,7 @@
 package br.pucpr.authserver.consultas
 
 import br.pucpr.authserver.consultas.requests.ConsultaRequest
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.slf4j.LoggerFactory
@@ -75,6 +76,7 @@ class ConsultaController(val service: ConsultaService) {
             ?: ResponseEntity.notFound().build()
 
     @DeleteMapping("/{id}")
+    @SecurityRequirement(name = "AuthServer")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<Void> =
         if (service.delete(id)) ResponseEntity.ok().build()
         else ResponseEntity.notFound().build()
